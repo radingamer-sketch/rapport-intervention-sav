@@ -1,9 +1,9 @@
 {
-  "name":"Pharm'Assistance – Rapport SAV",
-  "short_name":"Rapport SAV",
-  "start_url":"./",
-  "display":"standalone",
-  "background_color":"#f3f6f8",
-  "theme_color":"#123b63",
-  "lang":"fr"
+  "name": "Pharm'Assistance – Rapport SAV",
+  "short_name": "Rapport SAV",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f3f6f8",
+  "theme_color": "#123b63",
+  "lang": "fr"
 }

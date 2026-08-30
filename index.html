@@ -1,28 +1,65 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#123b63">
 <title>Rapport SAV – Pharm'Assistance</title>
 <link rel="manifest" href="manifest.json">
 <style>
 :root{--blue:#123b63;--green:#65b99b;--bg:#f3f6f8;--line:#d8e0e5}
-*{box-sizing:border-box} body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:#18232d}
-header{background:var(--blue);color:white;padding:18px 16px;border-bottom:6px solid var(--green)}
-header h1{margin:0;font-size:22px} header p{margin:5px 0 0;opacity:.9}
-main{max-width:850px;margin:auto;padding:14px}.card{background:white;border-radius:14px;padding:16px;margin:12px 0;box-shadow:0 2px 10px #0001}
-h2{font-size:17px;color:var(--blue);margin:0 0 12px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-label{font-size:13px;font-weight:bold;display:block} input,select,textarea{width:100%;margin-top:5px;padding:11px;border:1px solid var(--line);border-radius:8px;font:inherit}
-textarea{min-height:90px;resize:vertical}.checks{display:grid;grid-template-columns:1fr 1fr;gap:9px}.check{display:flex;gap:8px;align-items:flex-start;font-weight:normal}.check input{width:auto;margin-top:2px}
-button{border:0;border-radius:10px;padding:13px 16px;font-weight:bold;font-size:15px}.primary{background:var(--blue);color:white}.secondary{background:var(--green);color:#082b27}
-.actions{display:flex;gap:10px;flex-wrap:wrap}.sig{border:1px dashed #9aaab5;border-radius:10px;background:#fff;width:100%;height:140px;touch-action:none}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:#18232d}
+header{background:var(--blue);color:white;padding:14px 16px;border-bottom:6px solid var(--green)}
+.brand{max-width:850px;margin:auto;display:flex;align-items:center;gap:14px}
+.brand img{max-height:58px;max-width:230px;background:white;border-radius:8px;padding:5px}
+.brand-text h1{margin:0;font-size:22px}.brand-text p{margin:5px 0 0;opacity:.9}
+main{max-width:850px;margin:auto;padding:14px}
+.card{background:white;border-radius:14px;padding:16px;margin:12px 0;box-shadow:0 2px 10px #0001}
+h2{font-size:17px;color:var(--blue);margin:0 0 12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label{font-size:13px;font-weight:bold;display:block}
+input,select,textarea{width:100%;margin-top:5px;padding:11px;border:1px solid var(--line);border-radius:8px;font:inherit}
+textarea{min-height:90px;resize:vertical}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.check{display:flex;gap:8px;align-items:flex-start;font-weight:normal}.check input{width:auto;margin-top:2px}
+button{border:0;border-radius:10px;padding:13px 16px;font-weight:bold;font-size:15px;cursor:pointer}
+.primary{background:var(--blue);color:white}.secondary{background:var(--green);color:#082b27}.danger{background:#e9eef2;color:#263640}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.sig{border:1px dashed #9aaab5;border-radius:10px;background:#fff;width:100%;height:140px;touch-action:none}
 .small{font-size:12px;color:#60717d}.full{grid-column:1/-1}
-@media(max-width:600px){.grid,.checks{grid-template-columns:1fr}}
-@media print{body{background:white}header{padding:10px}main{padding:0}.card{box-shadow:none;border:1px solid #bbb;margin:7px 0;padding:10px}.actions{display:none}textarea{min-height:55px}.sig{height:80px}}
+.photo-input{display:none}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.photo-item{position:relative;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#eef2f4;min-height:120px}
+.photo-item img{width:100%;height:180px;object-fit:cover;display:block}
+.photo-item button{position:absolute;top:6px;right:6px;padding:7px 9px;border-radius:20px;background:#fff;color:#8a1f1f;box-shadow:0 1px 5px #0004}
+.print-only{display:none}
+@media(max-width:600px){.grid,.checks{grid-template-columns:1fr}.photo-grid{grid-template-columns:1fr 1fr}.brand img{max-width:170px}}
+@page{size:A4;margin:10mm}
+@media print{
+  body{background:white;font-size:10.5pt}
+  header{background:white!important;color:#18232d!important;border-bottom:3px solid var(--green);padding:0 0 6mm}
+  .brand{max-width:none}.brand img{max-height:17mm;max-width:55mm;padding:0}.brand-text h1{font-size:17pt;color:var(--blue)}
+  main{max-width:none;padding:0}.card{box-shadow:none;border:1px solid #bfc8ce;border-radius:5px;margin:4mm 0;padding:3mm;break-inside:avoid}
+  h2{font-size:11.5pt;margin-bottom:2mm}.actions,.no-print{display:none!important}
+  input,textarea{border:0!important;padding:1mm 0!important;margin:0!important;background:white!important;color:black!important}
+  textarea{min-height:15mm;resize:none;overflow:visible}
+  .grid{gap:2mm 5mm}.checks{gap:1.5mm 5mm}
+  .sig{height:27mm;border:1px solid #aaa}
+  .photo-grid{grid-template-columns:1fr 1fr;gap:4mm}
+  .photo-item{border:0;min-height:0;break-inside:avoid}.photo-item img{height:65mm;object-fit:contain;background:white}
+  .photo-item button{display:none}
+  .print-only{display:block}
+}
 </style>
 </head>
 <body>
-<header><h1>PHARM'ASSISTANCE</h1><p>Rapport d'intervention SAV / Maintenance</p></header>
+<header>
+  <div class="brand">
+    <img id="logo" src="logo.png" alt="Logo Pharm'Assistance" onerror="this.style.display='none'">
+    <div class="brand-text"><h1>PHARM'ASSISTANCE</h1><p>Rapport d'intervention SAV / Maintenance</p></div>
+  </div>
+</header>
 <main>
 <form id="sav">
 <section class="card"><h2>1. Patient / intervention</h2><div class="grid">
@@ -68,26 +105,112 @@ button{border:0;border-radius:10px;padding:13px 16px;font-weight:bold;font-size:
 
 <section class="card"><h2>6. Observations / suite à donner</h2><textarea name="observations"></textarea></section>
 
-<section class="card"><h2>7. Signature patient / aidant</h2><p class="small">Signez avec le doigt ou le stylet.</p><canvas id="signature" class="sig"></canvas>
-<div class="actions" style="margin-top:10px"><button type="button" class="secondary" id="clearSig">Effacer la signature</button></div></section>
+<section class="card" id="photosSection">
+<h2>7. Photos de l'intervention</h2>
+<p class="small no-print">Vous pouvez prendre une photo directement avec l'appareil photo ou ajouter plusieurs images déjà présentes sur l'appareil.</p>
+<div class="actions no-print">
+<button type="button" class="primary" id="takePhoto">📷 Prendre une photo</button>
+<button type="button" class="secondary" id="choosePhotos">🖼️ Ajouter depuis la galerie</button>
+</div>
+<input id="cameraInput" class="photo-input" type="file" accept="image/*" capture="environment">
+<input id="galleryInput" class="photo-input" type="file" accept="image/*" multiple>
+<div id="photoGrid" class="photo-grid"></div>
+<p id="noPhotosPrint" class="small print-only">Aucune photo jointe au rapport.</p>
+</section>
 
-<section class="card"><div class="actions">
-<button type="button" class="primary" onclick="window.print()">Créer / imprimer le rapport PDF</button>
+<section class="card"><h2>8. Signature patient / aidant</h2><p class="small no-print">Signez avec le doigt ou le stylet.</p><canvas id="signature" class="sig"></canvas>
+<div class="actions no-print" style="margin-top:10px"><button type="button" class="secondary" id="clearSig">Effacer la signature</button></div></section>
+
+<section class="card no-print"><div class="actions">
+<button type="button" class="primary" id="printBtn">Créer / imprimer le rapport PDF</button>
 <button type="button" class="secondary" id="reset">Nouveau rapport</button>
-</div><p class="small">Les champs sont sauvegardés localement sur l'appareil pendant la saisie.</p></section>
+</div><p class="small">Les champs sont sauvegardés localement sur l'appareil pendant la saisie. Les photos restent dans cette session jusqu'au nouveau rapport.</p></section>
 </form></main>
+
 <script>
-const form=document.getElementById('sav'), KEY='pharm-assistance-sav-v2';
-function save(){const d={}; new FormData(form).forEach((v,k)=>{if(d[k]) d[k]=[].concat(d[k],v); else d[k]=v}); localStorage.setItem(KEY,JSON.stringify(d))}
-function load(){let d={};try{d=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}; for(const [k,v] of Object.entries(d)){const els=form.elements[k]; if(!els)continue; const arr=[].concat(v); if(els.length&&!els.tagName){[...els].forEach(e=>{if(e.type==='checkbox'||e.type==='radio')e.checked=arr.includes(e.value)})}else els.value=v}}
-form.addEventListener('input',save); form.addEventListener('change',save); load();
-document.getElementById('reset').onclick=()=>{if(confirm('Effacer ce rapport et en commencer un nouveau ?')){localStorage.removeItem(KEY);form.reset();clearSig()}};
+const form=document.getElementById('sav'), KEY='pharm-assistance-sav-v3';
+function save(){
+  const d={};
+  new FormData(form).forEach((v,k)=>{if(v instanceof File)return;if(d[k])d[k]=[].concat(d[k],v);else d[k]=v});
+  localStorage.setItem(KEY,JSON.stringify(d));
+}
+function load(){
+  let d={};try{d=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  for(const [k,v] of Object.entries(d)){
+    const els=form.elements[k];if(!els)continue;const arr=[].concat(v);
+    if(els.length&&!els.tagName){[...els].forEach(e=>{if(e.type==='checkbox'||e.type==='radio')e.checked=arr.includes(e.value)})}
+    else els.value=v;
+  }
+}
+form.addEventListener('input',save);form.addEventListener('change',save);load();
+
 const c=document.getElementById('signature'),x=c.getContext('2d');let draw=false;
-function resize(){const r=c.getBoundingClientRect(),old=c.toDataURL();c.width=r.width*devicePixelRatio;c.height=r.height*devicePixelRatio;x.scale(devicePixelRatio,devicePixelRatio);x.lineWidth=2;x.lineCap='round'}
-resize(); addEventListener('resize',resize);
-function pos(e){const r=c.getBoundingClientRect(),p=e.touches?e.touches[0]:e;return [p.clientX-r.left,p.clientY-r.top]}
-function start(e){draw=true;let p=pos(e);x.beginPath();x.moveTo(...p);e.preventDefault()} function move(e){if(!draw)return;let p=pos(e);x.lineTo(...p);x.stroke();e.preventDefault()} function end(){draw=false}
-['mousedown','touchstart'].forEach(a=>c.addEventListener(a,start,{passive:false}));['mousemove','touchmove'].forEach(a=>c.addEventListener(a,move,{passive:false}));['mouseup','mouseleave','touchend'].forEach(a=>c.addEventListener(a,end));
-function clearSig(){x.clearRect(0,0,c.width,c.height)} document.getElementById('clearSig').onclick=clearSig;
-if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
-</script></body></html>
+function resize(){
+  const r=c.getBoundingClientRect();
+  let snapshot=null;try{snapshot=c.width?c.toDataURL():null}catch(e){}
+  c.width=Math.max(1,Math.round(r.width*devicePixelRatio));c.height=Math.max(1,Math.round(r.height*devicePixelRatio));
+  x.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);x.lineWidth=2;x.lineCap='round';x.strokeStyle='#111';
+  if(snapshot){const im=new Image();im.onload=()=>x.drawImage(im,0,0,r.width,r.height);im.src=snapshot}
+}
+resize();addEventListener('resize',resize);
+function pos(e){const r=c.getBoundingClientRect(),p=e.touches?e.touches[0]:e;return[p.clientX-r.left,p.clientY-r.top]}
+function start(e){draw=true;const p=pos(e);x.beginPath();x.moveTo(...p);e.preventDefault()}
+function move(e){if(!draw)return;const p=pos(e);x.lineTo(...p);x.stroke();e.preventDefault()}
+function end(){draw=false}
+['mousedown','touchstart'].forEach(a=>c.addEventListener(a,start,{passive:false}));
+['mousemove','touchmove'].forEach(a=>c.addEventListener(a,move,{passive:false}));
+['mouseup','mouseleave','touchend','touchcancel'].forEach(a=>c.addEventListener(a,end));
+function clearSig(){x.clearRect(0,0,c.width,c.height)}
+document.getElementById('clearSig').onclick=clearSig;
+
+let photos=[];
+const grid=document.getElementById('photoGrid'),camera=document.getElementById('cameraInput'),gallery=document.getElementById('galleryInput');
+document.getElementById('takePhoto').onclick=()=>camera.click();
+document.getElementById('choosePhotos').onclick=()=>gallery.click();
+
+async function compressImage(file){
+  const data=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(file)});
+  const img=await new Promise((resolve,reject)=>{const i=new Image();i.onload=()=>resolve(i);i.onerror=reject;i.src=data});
+  const max=1600,scale=Math.min(1,max/Math.max(img.width,img.height));
+  const cv=document.createElement('canvas');cv.width=Math.round(img.width*scale);cv.height=Math.round(img.height*scale);
+  cv.getContext('2d').drawImage(img,0,0,cv.width,cv.height);
+  return cv.toDataURL('image/jpeg',0.82);
+}
+async function addFiles(files){
+  for(const f of files){
+    if(!f.type.startsWith('image/'))continue;
+    try{photos.push(await compressImage(f))}catch(e){alert("Impossible d'ajouter une photo.")}
+  }
+  renderPhotos();
+  const photoCheck=[...form.querySelectorAll('input[name="controle"]')].find(e=>e.value==='Photos prises');
+  if(photoCheck&&photos.length){photoCheck.checked=true;save()}
+  camera.value='';gallery.value='';
+}
+camera.addEventListener('change',e=>addFiles(e.target.files));
+gallery.addEventListener('change',e=>addFiles(e.target.files));
+
+function renderPhotos(){
+  grid.innerHTML='';
+  photos.forEach((src,i)=>{
+    const box=document.createElement('div');box.className='photo-item';
+    const img=document.createElement('img');img.src=src;img.alt='Photo intervention '+(i+1);
+    const b=document.createElement('button');b.type='button';b.textContent='✕';b.title='Supprimer cette photo';b.onclick=()=>{photos.splice(i,1);renderPhotos()};
+    box.append(img,b);grid.appendChild(box);
+  });
+  document.getElementById('noPhotosPrint').style.display=photos.length?'none':'block';
+}
+renderPhotos();
+
+document.getElementById('printBtn').onclick=()=>{
+  save();
+  setTimeout(()=>window.print(),100);
+};
+document.getElementById('reset').onclick=()=>{
+  if(confirm('Effacer ce rapport et en commencer un nouveau ?')){
+    localStorage.removeItem(KEY);form.reset();clearSig();photos=[];renderPhotos();
+  }
+};
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
+</body>
+</html>
