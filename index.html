@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#123b63">
+<title>Rapport SAV – Pharm'Assistance</title>
+<link rel="manifest" href="manifest.json">
+<style>
+:root{--blue:#123b63;--green:#65b99b;--bg:#f3f6f8;--line:#d8e0e5}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:#18232d}
+header{background:var(--blue);color:white;padding:18px 16px;border-bottom:6px solid var(--green)}
+header h1{margin:0;font-size:22px} header p{margin:5px 0 0;opacity:.9}
+main{max-width:850px;margin:auto;padding:14px}.card{background:white;border-radius:14px;padding:16px;margin:12px 0;box-shadow:0 2px 10px #0001}
+h2{font-size:17px;color:var(--blue);margin:0 0 12px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+label{font-size:13px;font-weight:bold;display:block} input,select,textarea{width:100%;margin-top:5px;padding:11px;border:1px solid var(--line);border-radius:8px;font:inherit}
+textarea{min-height:90px;resize:vertical}.checks{display:grid;grid-template-columns:1fr 1fr;gap:9px}.check{display:flex;gap:8px;align-items:flex-start;font-weight:normal}.check input{width:auto;margin-top:2px}
+button{border:0;border-radius:10px;padding:13px 16px;font-weight:bold;font-size:15px}.primary{background:var(--blue);color:white}.secondary{background:var(--green);color:#082b27}
+.actions{display:flex;gap:10px;flex-wrap:wrap}.sig{border:1px dashed #9aaab5;border-radius:10px;background:#fff;width:100%;height:140px;touch-action:none}
+.small{font-size:12px;color:#60717d}.full{grid-column:1/-1}
+@media(max-width:600px){.grid,.checks{grid-template-columns:1fr}}
+@media print{body{background:white}header{padding:10px}main{padding:0}.card{box-shadow:none;border:1px solid #bbb;margin:7px 0;padding:10px}.actions{display:none}textarea{min-height:55px}.sig{height:80px}}
+</style>
+</head>
+<body>
+<header><h1>PHARM'ASSISTANCE</h1><p>Rapport d'intervention SAV / Maintenance</p></header>
+<main>
+<form id="sav">
+<section class="card"><h2>1. Patient / intervention</h2><div class="grid">
+<label>N° intervention<input name="numero"></label><label>Date<input type="date" name="date"></label>
+<label>Nom<input name="nom"></label><label>Prénom<input name="prenom"></label>
+<label class="full">Adresse<input name="adresse"></label><label>Heure<input type="time" name="heure"></label><label>Technicien<input name="technicien"></label>
+</div></section>
+
+<section class="card"><h2>2. Matériel concerné / identification</h2>
+<div class="checks">
+<label class="check"><input type="radio" name="materiel" value="Fauteuil roulant manuel">Fauteuil roulant manuel</label>
+<label class="check"><input type="radio" name="materiel" value="Fauteuil roulant électrique">Fauteuil roulant électrique</label>
+<label class="check"><input type="radio" name="materiel" value="Lit médicalisé">Lit médicalisé</label>
+<label class="check"><input type="radio" name="materiel" value="Lève-personne">Lève-personne</label>
+<label class="check"><input type="radio" name="materiel" value="Verticalisateur">Verticalisateur</label>
+<label class="check"><input type="radio" name="materiel" value="Autre">Autre</label>
+</div><div class="grid" style="margin-top:10px"><label>Marque / modèle<input name="modele"></label><label>N° de série<input name="serie"></label></div>
+</section>
+
+<section class="card"><h2>3. Nature de l'intervention</h2><div class="checks">
+<label class="check"><input type="checkbox" name="nature" value="Dépannage / réparation">Dépannage / réparation</label>
+<label class="check"><input type="checkbox" name="nature" value="Entretien / contrôle">Entretien / contrôle</label>
+<label class="check"><input type="checkbox" name="nature" value="Diagnostic">Diagnostic</label>
+<label class="check"><input type="checkbox" name="nature" value="Réglage">Réglage</label>
+<label class="check"><input type="checkbox" name="nature" value="Sous garantie">Sous garantie</label>
+<label class="check"><input type="checkbox" name="nature" value="Hors garantie">Hors garantie</label>
+<label class="check"><input type="checkbox" name="nature" value="Pièces remplacées">Pièce(s) remplacée(s)</label>
+<label class="check"><input type="checkbox" name="nature" value="Suite à prévoir">Devis / suite à prévoir</label>
+</div></section>
+
+<section class="card"><h2>4. Diagnostic / intervention / pièces</h2><textarea name="detail" placeholder="Panne constatée, diagnostic, travaux réalisés, références des pièces…"></textarea></section>
+
+<section class="card"><h2>5. Contrôles et validation technique</h2><div class="checks">
+<label class="check"><input type="checkbox" name="controle" value="Matériel testé et fonctionnel">Matériel testé après intervention et fonctionnel</label>
+<label class="check"><input type="checkbox" name="controle" value="Essai patient / aidant">Patient / aidant a essayé le matériel</label>
+<label class="check"><input type="checkbox" name="controle" value="Photos prises">Photos prises</label>
+<label class="check"><input type="checkbox" name="controle" value="Consignes rappelées">Consignes d'utilisation / sécurité rappelées</label>
+<label class="check"><input type="checkbox" name="controle" value="Intervention terminée">Intervention terminée</label>
+<label class="check"><input type="checkbox" name="controle" value="Réparation à compléter">Matériel sécurisé mais réparation à compléter</label>
+<label class="check"><input type="checkbox" name="controle" value="Nouvelle intervention">Nouvelle intervention / commande de pièce à prévoir</label>
+<label class="check"><input type="checkbox" name="controle" value="Matériel immobilisé">Matériel immobilisé / utilisation déconseillée</label>
+</div></section>
+
+<section class="card"><h2>6. Observations / suite à donner</h2><textarea name="observations"></textarea></section>
+
+<section class="card"><h2>7. Signature patient / aidant</h2><p class="small">Signez avec le doigt ou le stylet.</p><canvas id="signature" class="sig"></canvas>
+<div class="actions" style="margin-top:10px"><button type="button" class="secondary" id="clearSig">Effacer la signature</button></div></section>
+
+<section class="card"><div class="actions">
+<button type="button" class="primary" onclick="window.print()">Créer / imprimer le rapport PDF</button>
+<button type="button" class="secondary" id="reset">Nouveau rapport</button>
+</div><p class="small">Les champs sont sauvegardés localement sur l'appareil pendant la saisie.</p></section>
+</form></main>
+<script>
+const form=document.getElementById('sav'), KEY='pharm-assistance-sav-v2';
+function save(){const d={}; new FormData(form).forEach((v,k)=>{if(d[k]) d[k]=[].concat(d[k],v); else d[k]=v}); localStorage.setItem(KEY,JSON.stringify(d))}
+function load(){let d={};try{d=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}; for(const [k,v] of Object.entries(d)){const els=form.elements[k]; if(!els)continue; const arr=[].concat(v); if(els.length&&!els.tagName){[...els].forEach(e=>{if(e.type==='checkbox'||e.type==='radio')e.checked=arr.includes(e.value)})}else els.value=v}}
+form.addEventListener('input',save); form.addEventListener('change',save); load();
+document.getElementById('reset').onclick=()=>{if(confirm('Effacer ce rapport et en commencer un nouveau ?')){localStorage.removeItem(KEY);form.reset();clearSig()}};
+const c=document.getElementById('signature'),x=c.getContext('2d');let draw=false;
+function resize(){const r=c.getBoundingClientRect(),old=c.toDataURL();c.width=r.width*devicePixelRatio;c.height=r.height*devicePixelRatio;x.scale(devicePixelRatio,devicePixelRatio);x.lineWidth=2;x.lineCap='round'}
+resize(); addEventListener('resize',resize);
+function pos(e){const r=c.getBoundingClientRect(),p=e.touches?e.touches[0]:e;return [p.clientX-r.left,p.clientY-r.top]}
+function start(e){draw=true;let p=pos(e);x.beginPath();x.moveTo(...p);e.preventDefault()} function move(e){if(!draw)return;let p=pos(e);x.lineTo(...p);x.stroke();e.preventDefault()} function end(){draw=false}
+['mousedown','touchstart'].forEach(a=>c.addEventListener(a,start,{passive:false}));['mousemove','touchmove'].forEach(a=>c.addEventListener(a,move,{passive:false}));['mouseup','mouseleave','touchend'].forEach(a=>c.addEventListener(a,end));
+function clearSig(){x.clearRect(0,0,c.width,c.height)} document.getElementById('clearSig').onclick=clearSig;
+if('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script></body></html>
